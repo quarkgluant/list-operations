@@ -45,4 +45,36 @@ defmodule ListOps do
   def filter([], _fun) do
     []
   end
+
+  def reduce([], first, _fun) do
+    first
+  end
+
+  def reduce([head | tail], first, fun) do
+    fun.(first, head)  + reduce(tail, 0, fun)
+  end
+
+  def append([], []) do
+    []
+  end
+
+  def append([], [appended]) do
+    [appended]
+  end
+
+  def append([appended], []) do
+    [appended]
+  end
+
+  def append([], [head | tail]) do
+    [head | append([], tail)]
+  end
+
+  def append([head | tail], []) do
+    [head | append(tail, [])]
+  end
+
+  def append([head | tail], list_2) do
+    [head | append(tail, list_2)]
+  end
 end
