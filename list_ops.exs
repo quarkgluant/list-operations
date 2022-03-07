@@ -5,4 +5,44 @@ defmodule ListOps do
   #
   # Note that `++` is a function from an external module (Kernel, which is
   # automatically imported) and so shouldn't be used either.
+  def count([head | tail]) do
+    1 + count(tail)
+  end
+
+  def count([]) do
+    0
+  end
+
+  def reverse(list) do
+    reverse(list, [])
+  end
+
+  def reverse([head | tail], reversed) do
+    reverse(tail, [head | reversed])
+  end
+
+  def reverse([], reversed) do
+    reversed
+  end
+
+  def map([], fun) do
+    []
+  end
+
+  def map([head | tail], fun) do
+    [fun.(head) | map(tail, fun)]
+  end
+
+  def filter([head | tail], fun) do
+    case fun.(head) do
+      true ->
+        [head | filter(tail, fun)]
+      false ->
+        filter(tail, fun)
+    end
+  end
+
+  def filter([], _fun) do
+    []
+  end
 end

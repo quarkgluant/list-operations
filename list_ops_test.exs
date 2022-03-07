@@ -10,61 +10,61 @@ defmodule ListOpsistOpsTest do
   defp odd?(n), do: rem(n, 2) == 1
 
   # @tag :pending
-  test "length of an empty list" do
-    assert ListOps.length([]) == 0
+  test "count of an empty list" do
+    assert ListOps.count([]) == 0
   end
 
-  @tag :pending
-  test "length of a normal list" do
-    assert ListOps.length([1, 3, 5, 7]) == 4
+  # @tag :pending
+  test "count of a normal list" do
+    assert ListOps.count([1, 3, 5, 7]) == 4
   end
 
-  @tag :pending
-  test "length of huge list" do
-    assert ListOps.length(Enum.to_list(1..1_000_000)) == 1_000_000
+  # @tag :pending
+  test "count of huge list" do
+    assert ListOps.count(Enum.to_list(1..1_000_000)) == 1_000_000
   end
 
-  @tag :pending
+  # @tag :pending
   test "reverse of empty list" do
     assert ListOps.reverse([]) == []
   end
 
-  @tag :pending
+  # @tag :pending
   test "reverse of normal list" do
     assert ListOps.reverse([1, 3, 5, 7]) == [7, 5, 3, 1]
   end
 
-  @tag :pending
+  # @tag :pending
   test "reverse of huge list" do
     assert ListOps.reverse(Enum.to_list(1..1_000_000)) == Enum.to_list(1_000_000..1)
   end
 
-  @tag :pending
+  # @tag :pending
   test "map of empty list" do
     assert ListOps.map([], &(&1 + 1)) == []
   end
 
-  @tag :pending
+  # @tag :pending
   test "map of normal list" do
     assert ListOps.map([1, 3, 5, 7], &(&1 + 1)) == [2, 4, 6, 8]
   end
 
-  @tag :pending
+  # @tag :pending
   test "map of huge list" do
     assert ListOps.map(Enum.to_list(1..1_000_000), &(&1 + 1)) == Enum.to_list(2..1_000_001)
   end
 
-  @tag :pending
+  # @tag :pending
   test "filter of empty list" do
     assert ListOps.filter([], &odd?/1) == []
   end
 
-  @tag :pending
+  # @tag :pending
   test "filter of normal list" do
     assert ListOps.filter([1, 2, 3, 4], &odd?/1) == [1, 3]
   end
 
-  @tag :pending
+  # @tag :pending
   test "filter of huge list" do
     assert ListOps.filter(Enum.to_list(1..1_000_000), &odd?/1) == Enum.map(1..500_000, &(&1 * 2 - 1))
   end
