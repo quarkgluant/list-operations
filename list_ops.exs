@@ -5,7 +5,7 @@ defmodule ListOps do
   #
   # Note that `++` is a function from an external module (Kernel, which is
   # automatically imported) and so shouldn't be used either.
-  def count([head | tail]) do
+  def count([_head | tail]) do
     1 + count(tail)
   end
 
@@ -25,7 +25,7 @@ defmodule ListOps do
     reversed
   end
 
-  def map([], fun) do
+  def map([], _fun) do
     []
   end
 
@@ -58,20 +58,8 @@ defmodule ListOps do
     []
   end
 
-  def append([], [appended]) do
-    [appended]
-  end
-
-  def append([appended], []) do
-    [appended]
-  end
-
   def append([], [head | tail]) do
     [head | append([], tail)]
-  end
-
-  def append([head | tail], []) do
-    [head | append(tail, [])]
   end
 
   def append([head | tail], list_2) do
