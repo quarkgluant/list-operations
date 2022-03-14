@@ -37,7 +37,7 @@ defmodule ListOps do
     case fun.(head) do
       true ->
         [head | filter(tail, fun)]
-      false ->
+      _ ->
         filter(tail, fun)
     end
   end
@@ -54,15 +54,24 @@ defmodule ListOps do
     fun.(first, head)  + reduce(tail, 0, fun)
   end
 
-  def append([], []) do
-    []
+  def append([], list) do
+    list
   end
 
-  def append([], [head | tail]) do
-    [head | append([], tail)]
+
+  def append(list, []) do
+    list
   end
 
   def append([head | tail], list_2) do
     [head | append(tail, list_2)]
+  end
+
+  def concat([]) do
+    []
+  end
+
+  def concat([head | tail]) do
+    append(head, concat(tail))
   end
 end
